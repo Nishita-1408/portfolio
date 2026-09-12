@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nishita Gupta — Software Engineer</title>
+<meta name="description" content="Nishita Gupta — backend engineer, numbers person. BTech Math & Computing, IIT Mandi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12141c;
+    --bg-elev: #181b26;
+    --bg-elev-2: #1f2330;
+    --border: #2a2e3d;
+    --border-soft: #22252f;
+    --text: #e9e7e2;
+    --text-dim: #8b8fa3;
+    --text-dimmer: #5b5f70;
+    --cyan: #7dd3c0;
+    --cyan-dim: #4f8f83;
+    --amber: #e3b873;
+    --add: #8bc78e;
+    --remove: #e08a8a;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --maxw: 900px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(125,211,192,0.08), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 32px),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--cyan); text-decoration: none; }
+  a:hover{ color: var(--amber); }
+  a:focus-visible, button:focus-visible{ outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 2px; }
+
+  ::selection{ background: var(--cyan-dim); color: var(--bg); }
+
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(18,20,28,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .nav-inner{
+    max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family: var(--mono); font-weight:600; font-size: 15px; color: var(--text);
+    display:flex; align-items:center; gap:8px; letter-spacing: -0.02em;
+  }
+  .brand .prompt{ color: var(--cyan); }
+  nav.links{ display:flex; align-items:center; gap: 22px; }
+  nav.links a{
+    font-family: var(--mono); font-size: 13px; color: var(--text-dim);
+  }
+  nav.links a:hover{ color: var(--cyan); }
+  .nav-cta{
+    border: 1px solid var(--border); padding: 6px 12px; border-radius: 4px;
+    color: var(--text) !important;
+  }
+  .nav-cta:hover{ border-color: var(--cyan); color: var(--cyan) !important; }
+  .menu-btn{
+    display:none; background:none; border:1px solid var(--border); color: var(--text);
+    font-family: var(--mono); font-size: 18px; padding: 4px 10px; border-radius: 4px; cursor:pointer;
+  }
+
+  @media (max-width: 720px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      background: var(--bg-elev); border-bottom: 1px solid var(--border-soft);
+      flex-direction: column; align-items: flex-start; gap:0;
+      max-height:0; overflow:hidden; transition: max-height .25s ease;
+    }
+    nav.links.open{ max-height: 320px; }
+    nav.links a{ padding: 14px 24px; width:100%; border-bottom: 1px solid var(--border-soft); }
+    .menu-btn{ display:inline-block; }
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding: 76px 0; }
+  section + section{ border-top: 1px solid var(--border-soft); }
+  .eyebrow{
+    font-family: var(--mono); font-size: 13px; color: var(--cyan);
+    margin: 0 0 10px; letter-spacing: 0.01em;
+  }
+  .eyebrow::before{ content: '// '; color: var(--text-dimmer); }
+  h2.section-title{
+    font-family: var(--sans); font-weight: 800; font-size: clamp(24px, 4vw, 32px);
+    margin: 0 0 32px; letter-spacing: -0.02em;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{ padding: 88px 0 72px; }
+  .hero-eyebrow{
+    font-family: var(--mono); font-size: 14px; color: var(--text-dim);
+    margin: 0 0 18px;
+  }
+  .hero-eyebrow .seg{ color: var(--cyan); }
+  .hero-eyebrow .sep{ color: var(--text-dimmer); margin: 0 6px; }
+  h1{
+    font-family: var(--sans); font-weight: 800; font-size: clamp(38px, 7vw, 62px);
+    margin: 0 0 18px; letter-spacing: -0.03em; line-height: 1.05;
+  }
+  .hero-sub{
+    font-size: clamp(16px, 2.2vw, 19px); color: var(--text-dim); max-width: 560px;
+    margin: 0 0 34px;
+  }
+  .hero-sub strong{ color: var(--text); font-weight: 600; }
+
+  .cta-row{ display:flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+  .btn{
+    font-family: var(--mono); font-size: 14px; padding: 11px 18px; border-radius: 5px;
+    border: 1px solid var(--border); color: var(--text); transition: all .15s ease;
+    display:inline-flex; align-items:center; gap: 8px;
+  }
+  .btn.primary{ background: var(--cyan); color: var(--bg); border-color: var(--cyan); font-weight: 600; }
+  .btn.primary:hover{ background: var(--amber); border-color: var(--amber); color: var(--bg); }
+  .btn.ghost:hover{ border-color: var(--cyan); color: var(--cyan); }
+
+  /* terminal */
+  .terminal{
+    background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+    overflow:hidden; box-shadow: 0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex; align-items:center; gap:8px; padding: 10px 14px;
+    background: var(--bg-elev-2); border-bottom: 1px solid var(--border);
+  }
+  .dot{ width:10px; height:10px; border-radius:50%; }
+  .dot.r{ background:#e08a8a; } .dot.y{ background:#e3b873; } .dot.g{ background:#8bc78e; }
+  .term-title{ margin-left: 8px; font-family: var(--mono); font-size: 12px; color: var(--text-dimmer); }
+  .term-body{ padding: 20px 22px 26px; font-family: var(--mono); font-size: 14px; }
+  .term-body .line{
+    display:block; white-space: pre-wrap; overflow:hidden;
+    animation: reveal .1s steps(1,end) forwards; opacity:0;
+  }
+  @keyframes reveal{ to{ opacity:1; } }
+  .term-body .cmd{ color: var(--cyan); }
+  .term-body .out{ color: var(--text-dim); padding-left: 0; }
+  .term-body .out strong{ color: var(--text); font-weight:600; }
+  .cursor{
+    display:inline-block; width:8px; height:16px; background: var(--cyan);
+    margin-left:2px; vertical-align: -2px; animation: blink 1s step-end infinite;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation:none; }
+    .term-body .line{ animation: none !important; opacity: 1 !important; }
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  /* stats */
+  .stats{
+    display:grid; grid-template-columns: repeat(4,1fr); gap: 1px;
+    background: var(--border-soft); border: 1px solid var(--border-soft); border-radius: 8px;
+    overflow:hidden; margin-top: 40px;
+  }
+  .stat{ background: var(--bg-elev); padding: 20px 16px; text-align:center; }
+  .stat .num{ font-family: var(--mono); font-weight:700; font-size: clamp(18px,3vw,24px); color: var(--amber); }
+  .stat .lbl{ font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+  @media (max-width: 640px){ .stats{ grid-template-columns: repeat(2,1fr); } }
+
+  /* ---------- COMMIT CARD (experience) ---------- */
+  .commit{
+    background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+    padding: 24px 26px; font-family: var(--mono); font-size: 14px;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .commit:hover{ border-color: var(--cyan-dim); transform: translateY(-2px); }
+  .commit-meta{ color: var(--text-dimmer); font-size: 12.5px; margin-bottom: 4px; }
+  .commit-meta .hash{ color: var(--amber); }
+  .commit-title{ color: var(--text); font-weight:600; font-size:16px; margin: 10px 0 16px; font-family: var(--sans); }
+  .diff{ margin: 0; padding: 0; }
+  .diff .row{ display:flex; gap: 10px; padding: 5px 0; align-items:flex-start; }
+  .diff .mark{ flex: 0 0 14px; font-weight:700; }
+  .diff .add .mark, .diff .add{ color: var(--add); }
+  .diff .rem .mark, .diff .rem{ color: var(--remove); }
+  .diff .txt{ color: var(--text-dim); }
+  .diff .add .txt{ color: var(--text); }
+
+  /* ---------- PROJECTS ---------- */
+  .projects{ display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 760px){ .projects{ grid-template-columns: 1fr; } }
+  .project{
+    background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+    padding: 24px 26px; transition: border-color .15s ease, transform .15s ease; display:flex; flex-direction:column;
+  }
+  .project:hover{ border-color: var(--cyan-dim); transform: translateY(-2px); }
+  .project-file{ font-family: var(--mono); font-size: 12px; color: var(--text-dimmer); margin-bottom: 8px; }
+  .project h3{ font-size: 18px; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.01em; }
+  .badge{
+    display:inline-block; font-family: var(--mono); font-size: 12px; color: var(--bg);
+    background: var(--amber); padding: 3px 9px; border-radius: 4px; font-weight:600;
+    margin-bottom: 14px; align-self:flex-start;
+  }
+  .project p{ color: var(--text-dim); font-size: 14.5px; margin: 0 0 16px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; margin-top: auto; }
+  .tag{
+    font-family: var(--mono); font-size: 11.5px; color: var(--cyan); border: 1px solid var(--border);
+    padding: 3px 9px; border-radius: 4px;
+  }
+  .projects-more{ text-align:center; margin-top: 28px; }
+
+  /* ---------- STACK (json) ---------- */
+  .jsonblock{
+    background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+    padding: 26px 30px; font-family: var(--mono); font-size: 14px; overflow-x:auto;
+  }
+  .jsonblock .k{ color: var(--amber); }
+  .jsonblock .s{ color: var(--add); }
+  .jsonblock .p{ color: var(--text-dimmer); }
+  .jsonblock .c{ color: var(--text-dimmer); font-style: italic; }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .testrun{
+    background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px;
+    padding: 24px 26px; font-family: var(--mono); font-size: 13.5px;
+  }
+  .testrun .cmd{ color: var(--cyan); margin-bottom: 16px; display:block; }
+  .test-row{
+    display:flex; align-items:baseline; gap: 10px; padding: 9px 0;
+  }
+  .test-name{ color: var(--text-dim); white-space:nowrap; }
+  .test-leader{ flex: 1 1 auto; border-bottom: 1px dotted var(--border-soft); margin-bottom: 4px; min-width: 16px; }
+  .test-right{ display:flex; gap: 14px; align-items:baseline; flex-shrink: 0; }
+  .test-pass{ color: var(--add); font-weight:600; white-space:nowrap; }
+  .test-detail{ color: var(--text-dimmer); text-align:right; white-space:nowrap; }
+  .testrun .summary{ margin-top: 16px; color: var(--text-dimmer); }
+
+  @media (max-width: 640px){
+    .test-row{ flex-wrap: wrap; gap:2px 10px; }
+    .test-leader{ display:none; }
+    .test-right{ flex-direction:column; gap:2px; }
+    .test-detail{ text-align:left; white-space:normal; }
+  }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-row{
+    display:flex; justify-content:space-between; gap: 16px; padding: 16px 0;
+    border-bottom: 1px solid var(--border-soft); flex-wrap: wrap;
+  }
+  .edu-row:last-child{ border-bottom:none; }
+  .edu-left strong{ font-size:16px; }
+  .edu-left div{ color: var(--text-dim); font-size: 14px; margin-top:2px; }
+  .edu-right{ font-family: var(--mono); color: var(--amber); font-weight:600; white-space:nowrap; }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{ padding: 70px 0 50px; }
+  .contact-term{ }
+  .contact-row{ display:flex; gap: 14px; padding: 8px 0; font-family: var(--mono); font-size: 14px; }
+  .contact-row .k{ color: var(--text-dimmer); width: 90px; flex-shrink:0; }
+  .foot-note{ margin-top: 40px; color: var(--text-dimmer); font-size: 13px; font-family: var(--mono); }
+
+  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav-inner">
+    <div class="brand"><span class="prompt">&gt;_</span> nishita.dev</div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">≡</button>
+    <nav class="links" id="navLinks">
+      <a href="#contact">Contact</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#achievements">Achievements</a>
+      <a href="resume.pdf" class="nav-cta" download>Resume ↓</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <p class="hero-eyebrow"><span class="seg">backend engineer</span><span class="sep">/</span><span class="seg">numbers person</span></p>
+    <h1>Nishita Gupta</h1>
+    <p class="hero-sub">I build systems that hold up under load, and enjoy digging into the math and algorithms underneath them. Currently finishing a Math &amp; Computing degree at IIT Mandi, coming off an SDE internship at Flipkart.</p>
+
+    <div class="cta-row">
+      <a href="#projects" class="btn primary">View Projects</a>
+      <a href="resume.pdf" class="btn ghost" download>Download Resume</a>
+      <a href="https://github.com/Nishita-1408" class="btn ghost" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="term-title">nishita@iitmandi: ~</span>
+      </div>
+      <div class="term-body" id="termBody">
+        <span class="line" style="animation-delay:.05s"><span class="cmd">$</span> cat about.md</span>
+        <span class="line out" style="animation-delay:.35s">&gt; 4th-year BTech, Math &amp; Computing @ IIT Mandi (<strong>CGPA 8.86</strong>)</span>
+        <span class="line out" style="animation-delay:.55s">&gt; SDE Intern @ Flipkart — pricing infra, debug tooling, MCP pipelines</span>
+        <span class="line out" style="animation-delay:.75s">&gt; 300+ LeetCode problems solved, active on Codeforces</span>
+        <span class="line out" style="animation-delay:.95s">&gt; AIR 21 / 1.5L+ candidates, NTSE<span class="cursor"></span></span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="eyebrow">contact</p>
+    <h2 class="section-title">$ contact --nishita</h2>
+    <div class="terminal reveal">
+      <div class="term-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="term-title">nishita@iitmandi: ~/contact</span>
+      </div>
+      <div class="term-body">
+        <div class="contact-row"><span class="k">email</span> <a href="mailto:nishitagupta1408@gmail.com">nishitagupta1408@gmail.com</a></div>
+        <div class="contact-row"><span class="k">linkedin</span> <a href="https://www.linkedin.com/in/iamnishitagupta/" target="_blank" rel="noopener">/in/iamnishitagupta</a></div>
+        <div class="contact-row"><span class="k">github</span> <a href="https://github.com/Nishita-1408" target="_blank" rel="noopener">/Nishita-1408</a></div>
+        <div class="contact-row"><span class="k">phone</span> <a href="tel:+919818604429">+91-9818604429</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="eyebrow">education</p>
+    <h2 class="section-title">Where the CGPA lives</h2>
+    <div class="reveal">
+      <div class="edu-row">
+        <div class="edu-left"><strong>Indian Institute of Technology, Mandi</strong><div>BTech, Mathematics and Computing · 2023 – Present</div></div>
+        <div class="edu-right">CGPA 8.86/10</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-left"><strong>Amity International School, Mayur Vihar</strong><div>Senior Secondary Education · 2022 – 2023</div></div>
+        <div class="edu-right">96%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="eyebrow">experience</p>
+    <h2 class="section-title">One internship, several tasks completed</h2>
+
+    <div class="commit reveal">
+      <div class="commit-meta"><span class="hash">commit 7f3a91c</span> — Author: Nishita Gupta &lt;SDE Intern&gt;</div>
+      <div class="commit-meta">Date: Jun 2026 – Jul 2026 · Flipkart</div>
+      <div class="commit-title">Software Development Engineer Intern</div>
+      <div class="diff">
+        <div class="row add"><span class="mark">+</span><span class="txt">Migrated pricing logic to the new Helix platform, adding derived value tags (BUDGET PICK / TOP VALUE) with sale-context gating — surfaces budget picks during BAU and top-value picks during tier-1 sales.</span></div>
+        <div class="row add"><span class="mark">+</span><span class="txt">Fixed a legacy/Jakarta incompatibility with Java reflection, exposing a filter trail across old and new systems through a single agent JAR — no per-call reflection overhead.</span></div>
+        <div class="row add"><span class="mark">+</span><span class="txt">Orchestrated a consolidated POST API + MCP tool pipeline for offer debugging.</span></div>
+        <div class="row rem"><span class="mark">-</span><span class="txt">50+ lines of hand-built JSON per request</span></div>
+        <div class="row add"><span class="mark">+</span><span class="txt">3 fields</span></div>
+        <div class="row add"><span class="mark">+</span><span class="txt">Trimmed MCP tool response payloads for the chatbot, cutting LLM token usage from ~24k to ~12k tokens (-50%) while holding API latency steady at 576ms.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="eyebrow">projects</p>
+    <h2 class="section-title">Things I built because the problem was interesting</h2>
+
+    <div class="projects">
+      <div class="project reveal">
+        <div class="project-file">portfolio_optimizer/</div>
+        <h3>Multi-Objective Evolutionary Portfolio Optimisation</h3>
+        <span class="badge">Sharpe 1.055 ▲</span>
+        <p>A multi-objective evolutionary framework across S&amp;P 500 and LSE data (2015–2024), optimizing skewness and kurtosis alongside return and risk via NSGA-III reference-direction niching. Ledoit-Wolf shrinkage and RMT denoising keep the covariance estimates honest at high dimensions, and a parametric Student's-t CVaR (via moment matching) shows heavy-tail risk optimization holds up against historical simulation.</p>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">NSGA-III</span><span class="tag">MOEA/D</span><span class="tag">GARCH</span><span class="tag">Ledoit-Wolf</span>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-file">voyager/</div>
+        <h3>Voyager — Ride-Sharing for Students</h3>
+        <span class="badge">Dual-backend, RLS-secured</span>
+        <p>A full-stack ride-sharing app with Firebase handling auth and Supabase/PostgreSQL (with Row Level Security) managing ride listings and a digital ticket marketplace. Geospatial routing runs through Nominatim geocoding and OSRM, with multi-stop pathing and geometry filtering to kill bad route matches — plus a multi-party approval flow that needs every passenger's yes before a ride locks in.</p>
+        <div class="tags">
+          <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">Firebase Auth</span><span class="tag">OSRM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-more">
+      <a href="https://github.com/Nishita-1408" class="btn ghost" target="_blank" rel="noopener">More on GitHub ↗</a>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <p class="eyebrow">stack</p>
+    <h2 class="section-title">package.json, roughly</h2>
+    <pre class="jsonblock reveal"><code><span class="p">{</span>
+  <span class="k">"languages"</span><span class="p">:</span> [<span class="s">"C++"</span><span class="p">,</span> <span class="s">"Python"</span><span class="p">,</span> <span class="s">"Java"</span><span class="p">,</span> <span class="s">"MySQL"</span>]<span class="p">,</span>
+  <span class="k">"frameworks"</span><span class="p">:</span> [<span class="s">"Dropwizard"</span><span class="p">,</span> <span class="s">"Flask"</span><span class="p">,</span> <span class="s">"Kubernetes"</span><span class="p">,</span> <span class="s">"Docker"</span><span class="p">,</span> <span class="s">"Supabase"</span><span class="p">,</span> <span class="s">"Git"</span>]<span class="p">,</span>
+  <span class="k">"also_fluent_in"</span><span class="p">:</span> [<span class="s">"Solidworks"</span>]<span class="p">,</span>
+  <span class="c">// coursework: DSA, ML, Applied DBs, Automata Theory, ODEs, PDEs, Graph Theory</span>
+<span class="p">}</span></code></pre>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <p class="eyebrow">achievements</p>
+    <h2 class="section-title">Test suite, all green</h2>
+    <div class="testrun reveal">
+      <span class="cmd">$ pytest achievements.py -v</span>
+      <div class="test-row"><span class="test-name">test_ntse_rank</span><span class="test-leader"></span><span class="test-right"><span class="test-pass">PASSED</span><span class="test-detail">AIR 21 / 1.5L+ candidates</span></span></div>
+      <div class="test-row"><span class="test-name">test_leetcode_grind</span><span class="test-leader"></span><span class="test-right"><span class="test-pass">PASSED</span><span class="test-detail">300+ problems solved</span></span></div>
+      <div class="test-row"><span class="test-name">test_flipkart_grid</span><span class="test-leader"></span><span class="test-right"><span class="test-pass">PASSED</span><span class="test-detail">Semi-finalist, GRID 7.0 (1L+ candidates)</span></span></div>
+      <div class="test-row"><span class="test-name">test_sof_olympiads</span><span class="test-leader"></span><span class="test-right"><span class="test-pass">PASSED</span><span class="test-detail">Intl. Rank 250 (Science), 150 (English)</span></span></div>
+      <div class="test-row"><span class="test-name">test_abacus_championships</span><span class="test-leader"></span><span class="test-right"><span class="test-pass">PASSED</span><span class="test-detail">Champion's Trophy + Gold + Silver, '12–'14</span></span></div>
+      <div class="test-row"><span class="test-name">test_quizzing_club</span><span class="test-leader"></span><span class="test-right"><span class="test-pass">PASSED</span><span class="test-detail">Core member, Qurosity — Inter IIT Cult Meet</span></span></div>
+      <div class="summary">======================== 6 passed in 4y ========================</div>
+    </div>
+  </section>
+
+
+</main>
+
+<script>
+  // mobile nav toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+</script>
+
+</body>
+</html>
